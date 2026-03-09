@@ -189,20 +189,6 @@ detect_home_assistant() {
         fi
     done
 
-    # Method 3: Scan local network for port 8123
-    if [ ${#ha_urls[@]} -eq 0 ]; then
-        log_info "Scanning local network for Home Assistant (port 8123)..." >&2
-        while IFS= read -r ip; do
-            if timeout $timeout bash -c "echo >/dev/tcp/$ip/8123" 2>/dev/null; then
-                if curl -s --connect-timeout $timeout "http://$ip:8123/api/" 2>/dev/null | grep -q "API running"; then
-                    ha_urls+=("http://$ip:8123")
-                    log_success "Found Home Assistant at $ip:8123" >&2
-                    break
-                fi
-            fi
-        done < <(get_local_network_ips)
-    fi
-
     if [ ${#ha_urls[@]} -gt 0 ]; then
         printf '%s\n' "${ha_urls[@]}"
     fi
