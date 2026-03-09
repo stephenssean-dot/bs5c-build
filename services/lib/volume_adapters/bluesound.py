@@ -28,7 +28,7 @@ class BluesoundVolume(VolumeAdapter):
         try:
             async with self._session.get(
                 f"{self._base_url}/Volume?level={int(volume)}",
-                timeout=aiohttp.ClientTimeout(total=5),
+                timeout=aiohttp.ClientTimeout(total=2),
             ) as resp:
                 resp.raise_for_status()
                 logger.info("-> BlueSound volume: %.0f%%", volume)

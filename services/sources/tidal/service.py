@@ -303,7 +303,7 @@ class TidalService(DigitPlaylistMixin, SourceBase):
             return await self._play_track(track_meta['url'])
 
         log.info("Play playlist %s (track_index=%s)", playlist_id, track_index)
-        ok = await self.player_play(uri=url)
+        ok = await self.player_play(url=url)
         if ok:
             self.state = "playing"
             await self.register("playing", auto_power=True)
@@ -362,7 +362,7 @@ class TidalService(DigitPlaylistMixin, SourceBase):
     async def _play_track(self, url):
         """Play a specific track by TIDAL URL (ShareLink path)."""
         log.info("Play track %s", url)
-        ok = await self.player_play(uri=url)
+        ok = await self.player_play(url=url)
         if ok:
             self.state = "playing"
             self._current_playlist = None

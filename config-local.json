@@ -12,6 +12,7 @@
         "/mnt/usb-music"
       ]
     },
+"TIDAL": "tidal",
     "SPOTIFY": "spotify",
     "NEWS": "news",
     "SCENES": "scenes",
