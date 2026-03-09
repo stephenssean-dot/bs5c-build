@@ -1,0 +1,7 @@
+[Unit]
+Description=Notify HA of %i failure
+
+[Service]
+Type=oneshot
+ExecStart=/home/bs5/beosound5c/services/system/notify-failure.sh %i
+User=bs5

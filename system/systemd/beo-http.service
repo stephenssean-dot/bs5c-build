@@ -1,0 +1,21 @@
+[Unit]
+Description=BeoSound5c HTTP Server
+After=network.target
+Wants=network.target
+OnFailure=beo-notify-failure@%n.service
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=bs5
+WorkingDirectory=/home/bs5/beosound5c/web
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/bs5/beosound5c/services/http_server.py 8000
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

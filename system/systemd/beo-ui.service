@@ -1,0 +1,23 @@
+[Unit]
+Description=BeoSound5c Chromium UI kiosk
+After=network.target beo-http.service beo-router.service
+Wants=network.target beo-http.service beo-router.service
+Requires=beo-http.service
+
+[Service]
+Type=simple
+User=bs5
+Group=bs5
+WorkingDirectory=/home/bs5/beosound5c/services
+ExecStart=/home/bs5/beosound5c/services/ui.sh
+KillMode=mixed
+TimeoutStopSec=5
+Restart=on-failure
+RestartSec=10
+StartLimitIntervalSec=120
+StartLimitBurst=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target 

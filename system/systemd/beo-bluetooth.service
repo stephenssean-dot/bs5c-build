@@ -1,0 +1,27 @@
+[Unit]
+Description=BeoSound5c Bluetooth Remote service (HID)
+After=network.target bluetooth.target
+Wants=network.target bluetooth.target
+Requires=bluetooth.target
+OnFailure=beo-notify-failure@%n.service
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=notify
+# Requires user to be in the 'input' group for /dev/input access.
+# install.sh adds the user to the input group automatically.
+User=bs5
+SupplementaryGroups=input
+WorkingDirectory=/home/bs5/beosound5c/services
+EnvironmentFile=-/etc/beosound5c/secrets.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/bs5/beosound5c/services/bluetooth.py
+Restart=always
+RestartSec=5
+WatchdogSec=60
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

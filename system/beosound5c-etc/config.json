@@ -1,0 +1,80 @@
+{
+  "device": "BS5cCentral",
+  "menu": {
+    "PLAYING": "playing",
+    "CD": {
+      "id": "cd",
+      "hidden": true
+    },
+    "USB": {
+      "id": "usb",
+      "paths": [
+        "/mnt/usb-music"
+      ]
+    },
+    "SPOTIFY": "spotify",
+    "NEWS": "news",
+    "SCENES": "scenes",
+    "SHOWING": "showing",
+    "SYSTEM": "system",
+    "SECURITY": {
+      "url": "softarc/security.html"
+    }
+  },
+  "scenes": [
+    {
+      "id": "dinner",
+      "name": "Dinner",
+      "icon": "fork-knife",
+      "color": "#fa0"
+    },
+    {
+      "id": "cozy",
+      "name": "Cozy",
+      "icon": "fire",
+      "color": "#fa0"
+    },
+    {
+      "id": "all_on",
+      "name": "All on",
+      "icon": "sun",
+      "color": "#fa0"
+    },
+    {
+      "id": "all_off",
+      "name": "All off",
+      "icon": "power",
+      "color": "#c55"
+    }
+  ],
+  "player": {
+    "type": "bluesound",
+    "ip": "192.168.4.36"
+  },
+  "bluetooth": {
+    "remote_mac": "00:00:00:00:00:00"
+  },
+  "home_assistant": {
+    "url": "http://homeassistant.local:8123",
+    "webhook_url": "http://homeassistant.local:8123/api/webhook/beosound5c"
+  },
+  "transport": {
+    "mode": "webhook"
+  },
+  "volume": {
+    "type": "bluesound",
+    "host": "192.168.4.36",
+    "max": 70,
+    "step": 3
+  },
+  "cd": {
+    "device": "/dev/sr0"
+  },
+  "join": {},
+  "spotify": {
+    "client_id": ""
+  },
+  "news": {
+    "guardian_api_key": "test"
+  }
+}
